@@ -1,0 +1,934 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    display: grid;
+    grid-template-columns: 0.6fr 1.6fr 0.8fr;
+    grid-template-rows: 0fr 0fr 1.7fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "navbar navbar navbar"
+        "sidebar Tbanner Tbanner"
+        "sidebar middle-content Rightside-Content";
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.Tbanner {
+    grid-area: Tbanner;
+}
+
+.middle-content {
+    grid-area: middle-content;
+}
+
+.Rightside-Content {
+    grid-area: Rightside-Content;
+}
+
+
+.middle-content {
+    margin-left: 20px;
+    padding: 40px;
+    grid-area: middle-content;
+    /* Ensuring grid-area aligns with the layout */
+}
+
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.site-logo {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+.navbar>.container,
+.navbar>.container-fluid,
+.navbar>.container-lg,
+.navbar>.container-md,
+.navbar>.container-sm,
+.navbar>.container-xl,
+.navbar>.container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 100%;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding: 10px;
+}
+
+.navbar {
+    font-weight: bold;
+    width: 100%;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: end;
+}
+
+/* Additional CSS for the search bar dropdown */
+
+.ml-auto {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-bar {
+    display: none;
+    position: absolute;
+    top: 50px;
+    /* Adjust as needed */
+    right: 10px;
+    /* Adjust as needed */
+    width: 200px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 5px;
+}
+
+
+/* Sidebar styles */
+.sidebar {
+    width: auto;
+    height: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    /* Ensure sidebar is above other content */
+}
+
+.sidebar-list {
+    list-style-type: none;
+    padding: 0px 30px;
+}
+
+.sidebar-list li {
+    margin: 15px 0;
+}
+
+.sidebar-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-list a:hover {
+    background-color: #ddd;
+    color: #007bff;
+}
+
+.sub-list {
+    list-style-type: none;
+    padding-left: 20px;
+    display: none;
+}
+
+.sub-list a {
+    font-size: 14px;
+}
+
+
+
+/* Content styles */
+.content {
+    margin-left: 220px;
+    /* Adjust based on sidebar width */
+    padding: 20px;
+}
+
+/* Banner styles */
+.banner {
+    position: relative;
+    /* width: calc(100% - 200px); */
+    /* Adjust based on sidebar width */
+    height: 300px;
+    /* margin-left: 200px; */
+    /* Ensure banner starts after sidebar */
+    background-image: url('../Images/Dept-banner.jpg');
+    background: rgb(104, 171, 246);
+    background: radial-gradient(circle, rgba(104, 171, 246, 1) 34%, rgb(57, 181, 230) 100%);
+    /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: left;
+    /* Align text to the left */
+    z-index: 1;
+    /* Ensure banner is above other content but below sidebar */
+    padding-left: 20px;
+    /* Add padding to the left for spacing */
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Overlay color for better text visibility */
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+    /* Added padding for better text spacing on smaller screens */
+}
+
+.banner-title {
+    font-size: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+.banner-description {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.quicklinks {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Adds space between items */
+}
+
+.quicklink {
+    flex: 1 1 30%;
+    /* Flex grow, shrink, basis */
+    padding: 15px;
+    text-align: center;
+    border: 2px solid #d6d6d6;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    min-width: 200px;
+    /* Ensures a minimum width */
+}
+
+.quicklink:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.quicklink img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.quicklink span {
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+.middle-content h2 {
+    margin-top: 30px;
+    letter-spacing: -1px;
+    color: #5696d9;
+    line-height: 1.5;
+}
+
+.middle-content p {
+    padding: 5px 87px 5px 0px;
+    text-align: justify;
+}
+
+.img-grid1 {
+    background-image: url('../Images/gridimage1.jpg');
+    background-image: linear-gradient(#f35d5dc7, #5151efd4);
+    height: 150px;
+    width: 100px;
+    margin: 10px 20px 10px 0px;
+}
+
+.img-grid2 {
+    background-image: url('../Images/gridimage2.jpeg');
+    background-image: linear-gradient(#f35d5dc7, #5151efd4);
+    height: 150px;
+    width: 100px;
+    margin: 10px 20px 10px 0px;
+}
+
+.img-grid {
+    padding: 10px;
+    color: #fff;
+}
+
+.img-grid h5 {
+    text-align: left;
+    width: 100px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.dept-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the container */
+    object-position: center;
+    /* Center the image within the container */
+}
+
+.dept-image {
+    overflow: hidden;
+}
+
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+.card {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    display: -ms-flexbox;
+    /* display: inline-block; */
+    -ms-flex-direction: unset;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid rgba(0, 0, 0, .125);
+    border-radius: 2.25rem;
+    margin-top: 42px;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    /* transform: scale(1.5); */
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.card .btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.idd {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.idd1 {
+    font-size: 12px
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444
+}
+
+.btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 15px
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}
+
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: calc(var(--bs-border-width)* -1);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgba(151, 20, 20, 255);
+    font-size: large;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group .btn {
+    background-color: rgba(151, 20, 20, 255);
+    color: wheat;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.form {
+    margin-bottom: 50px;
+    margin-right: 40px;
+}
+
+.form-input {
+    margin: 10px 5px;
+    display: flex;
+    align-items: center;
+    background-color: #f6f2f2bf;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    color: #971414;
+}
+
+.circle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: #0078ffab;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.circle-button:hover {
+    background-color: #0056b3;
+}
+
+.Rightside-Content h3 {
+    color: #971414;
+    padding: 20px 10px;
+}
+
+.contact-section {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    margin-top: 25px;
+}
+
+.contact-image img {
+    border-radius: 50%;
+    /* Make the image circular */
+    width: 100px;
+    /* Set the size of the circular image */
+    height: 100px;
+    /* Set the size of the circular image */
+    object-fit: cover;
+    /* Ensure the image covers the circle */
+    margin-right: 20px;
+    /* Space between image and text */
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-weight: bold;
+    /* Make the name bold */
+    margin: 0;
+    /* Remove default margins */
+}
+
+.email,
+.phone {
+    margin: 0;
+    /* Remove default margins */
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid #000;
+    /* Thickness and color of the line */
+    margin: 20px 0;
+    /* Margin above and below the line */
+    margin-right: 40px;
+}
+
+
+.footer {
+    position: relative;
+    background: url('../Images/wave.svg') no-repeat center center/cover;
+    color: white;
+    padding: 50px 0 0px 0px;
+    margin-top: 10px;
+}
+
+.footer-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust opacity as needed */
+}
+
+.footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ddd;
+    /* Adjust hover color as needed */
+}
+
+.footer p {
+    margin: 0;
+}
+
+
+
+
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.dark-mode .banner {
+    background-color: #33333300;
+}
+
+body.dark-mode .profile-desc h1,
+body.dark-mode .profile-desc h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .quicklinks .quicklink span {
+    color: #ffffff;
+}
+
+body.dark-mode .social-sec {
+    background-color: #2b2b2b00;
+}
+
+body.dark-mode .events,
+body.dark-mode .announcements {
+    background-color: #00000000;
+}
+
+body.dark-mode .footer {
+    background-color: #1a1a1a;
+    background-image: none;
+}
+
+body.dark-mode .header {
+    color: #000000;
+}
+
+body.dark-mode p {
+    color: #ffffff;
+}
+
+body.dark-mode .card-body {
+    color: #ffffff;
+}
+
+body.dark-mode .card {
+    background-color: #00000000;
+}
+
+body.dark-mode li {
+    background-color: #00000000;
+    color: #fff;
+}
+
+body.dark-mode .form-input {
+    background-color: #00000000;
+    color: #fff;
+}
+
+body.dark-mode a {
+    color: #fff;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+body.dark-mode .banner {
+    background-image: none;
+    background: radial-gradient(rgba(255, 255, 255, 0.397), rgba(0, 0, 0, 0.741));
+}
+
+body.dark-mode .social-sec .events {
+    background-color: #00000000;
+}
+
+body.dark-mode .sidebar {
+    background-color: #222222b8;
+}
+
+body.dark-mode .middle-content {
+    background-color: #00000000;
+}
+
+body.dark-mode .Rightside-Content {
+    background-color: #00000000;
+}
+
+body.dark-mode .quicklink {
+    background-color: #00000000;
+}
+
+body.dark-mode .card {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+/* Toggle Button */
+.toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toggle-container input {
+    visibility: hidden;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.toggle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.4s;
+}
+
+input:checked+.toggle::after {
+    background-color: #007bff;
+}
+
+input:checked+.toggle::before {
+    transform: translateX(26px);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .site-logo {
+        width: 120px;
+    }
+
+    .banner {
+        height: 200px;
+        /* Adjust banner height for tablets */
+        width: 100%;
+        margin-left: 0;
+        /* Banner should take full width on small screens */
+    }
+
+    .banner-title {
+        font-size: 36px;
+        /* Adjust title font size for tablets */
+    }
+
+    .banner-description {
+        font-size: 16px;
+        /* Adjust description font size for tablets */
+    }
+
+    .content {
+        margin-left: 0;
+        /* Ensure content also takes full width on small screens */
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links li {
+        margin: 10px 0;
+    }
+
+    .middle-content {
+        margin-left: 0;
+    }
+
+    .quicklinks {
+        justify-content: center;
+    }
+
+    .quicklink {
+        flex: 1 1 45%;
+        min-width: 100px;
+        /* Adjust for sm
+        aller screens */
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .navbar-collapse {
+        background-color: #fff;
+        z-index: 9999;
+        position: absolute;
+        width: 100%;
+    }
+
+    .navbar-collapse {
+        position: static;
+        background-color: white;
+    }
+
+    .banner {
+        height: 150px;
+        /* Adjust banner height for mobile */
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+        /* Banner should take full width on small screens */
+    }
+
+    .banner-title {
+        font-size: 28px;
+        /* Adjust title font size for mobile */
+    }
+
+    .banner-description {
+        font-size: 14px;
+        /* Adjust description font size for mobile */
+    }
+
+    .content {
+        margin-left: 0;
+        /* Ensure content also takes full width on small screens */
+    }
+
+    .quicklinks {
+        justify-content: space-between;
+    }
+
+    .quicklink {
+        flex: 1 1 28%;
+        /* Ensuring quicklinks remain inline on small screens */
+    }
+
+    .quicklink img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .quicklink span {
+        font-size: small;
+    }
+
+    .img-grid1 {
+        height: 150px;
+        width: 100px;
+    }
+
+    /* Toggle Button */
+    .toggle-container {
+        top: 20px;
+        right: 40%;
+    }
+
+    body.dark-mode .navbar-light .navbar-nav .nav-link {
+        color: #000000
+    }
+
+    .container-fluid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0fr 0fr 0fr 0fr 0fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "navbar navbar navbar"
+            "Tbanner Tbanner Tbanner"
+            "middle-content middle-content middle-content"
+            "Rightside-Content Rightside-Content Rightside-Content"
+            "sidebar sidebar sidebar";
+    }
+
+    .navbar {
+        grid-area: navbar;
+    }
+
+    .Tbanner {
+        grid-area: Tbanner;
+    }
+
+    .middle-content {
+        grid-area: middle-content;
+
+    }
+
+    .Rightside-Content {
+        grid-area: Rightside-Content;
+        padding: 0px 25px 50px 25px;
+        margin: auto;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+
+    .middle-content p {
+        padding: 5px;
+    }
+
+    .footer {
+        background-attachment: fixed;
+    }
+}
